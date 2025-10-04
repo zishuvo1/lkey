@@ -1,0 +1,118 @@
+TC ID,Test Scenario,Preconditions,Priority,Severity,Module,URL,Test Steps,Data,Expected Result,Actual Result,Status,Defects
+TC001,Valid Login,"User exists, on Login page",P1,Critical,Login,Login,"1. Open Login page 
+2. Enter valid email & password 
+3. Click Login","Email: shuvo...
+password: Shuvo...",User logged in & redirected to dashboard,User logged in & redirected to dashboard/my-account,Passed,-
+TC002,Invalid Login (wrong password),On Login page,P1,High,Login,Login,"1. Enter valid email 
+2. Enter wrong password 
+3. Click Login","Email: shuvo...
+password: djf...","""Invalid credentials""","""Invalid credentials""",Passed,-
+TC003,Empty Fields Validation (Login),On Login page,P2,Medium,Login,Login,"1. Leave both fields empty 
+2. Click Login",N/A,Required-field validation shown,The email field is required.,Passed,-
+TC004,Invalid Email Format (Login),On Login page,P2,Medium,Login,Login,"1. Enter invalid email format 
+2. Enter password 
+3. Click Login",abc@xyz,Client-side/email-format validation,These credentials do not match our records.,Failed,DEF-001
+TC005,Password Masking,On Login page,P2,Low,Login,Login,"1. Type password in field 
+2. Observe characters",N/A,Characters masked; show/hide toggle works,This feature are not here.,Failed,DEF-002
+TC006,Remember Me,On Login page,P2,Medium,Login,Login,"1. Tick ""Remember me"" 
+2. Login 
+3. Close & reopen browser 
+4. Revisit site",valid creds,Session persisted / user still logged in,Session persisted / user still logged in,Passed,-
+TC007,Forgot Password Flow,On Login page,P2,High,Login,Reset,"1. Click ""Forgot Password"" 
+2. Enter registered email 
+3. Submit",registered email,Reset link / instructions sent to email,Reset link / instructions sent to email,Passed,-
+TC008,Multiple Wrong Attempts / Lockout,On Login page,P1,Critical,Login,Login,1. Attempt login with wrong credentials 5+ times,invalid creds,Account locked / captcha displayed / delay shown,Multiple invalid attempts allowed without lockout/captcha.,Failed,DEF-003
+TC009,Valid Registration,On Register page,P1,High,Registration,Register,"1. Open register 
+2. Fill valid details
+3. Submit",valid details,Account created + confirmation email,Account created but no confirmation email send,Failed,DEF-004
+TC010,Duplicate Email Registration,On Register page,P2,High,Registration,Register,"1. Register with existing email 
+2. Submit",existing email,"Error ""Email already exists""","Error ""Email already exists""",Passed,-
+TC011,Password Strength Validation,Register page,P2,Medium,Registration,Register,"1. Enter weak password 
+2. Submit",12345,Password strength error / suggestions,The password must be at least 8 characters.,Passed,-
+TC012,Confirm Password Match,Register page,P2,Medium,Registration,Register,"1. Enter password 
+2. Enter different confirm password 
+3. Submit",mismatch pwd,"Validation: ""Passwords do not match""",The password confirmation does not match.,Passed,-
+TC013,Homepage Load (performance & assets),Browser open,P1,Medium,Homepage,Homepage,"1. Open homepage 
+2. Wait full load",N/A,Page loads without errors; <acceptable load time>,Page loads without errors; <181ms>,Passed,-
+TC014,Verify Title & Meta,Homepage,P2,Low,Homepage/SEO,Homepage,1. Check browser tab title & meta description,N/A,Correct title & meta present,Correct title & meta present,Passed,-
+TC015,Logo Click Redirects Home,Any page,P2,Low,Navigation,Homepage,"1. Click site logo 
+2. Observe redirect",N/A,Redirects to homepage,Redirects to homepage,Passed,-
+TC016,Main Menu Links,Homepage loaded,P2,Medium,Navigation,Homepage,1. Click top menu items,N/A,Each link navigates to correct page,Each link navigates to correct page,Passed,-
+TC017,Category / Submenu Navigation,Homepage,P2,Medium,Navigation,Shop,1. Hover shop → click category,N/A,Category listing opens & products shown,Category listing opens & products shown,Passed,-
+TC018,Currency Switcher,Homepage,P2,Low,UI,Homepage,"1. Switch currency BDT/USD/INR 
+2. Observe prices",N/A,Prices update to selected currency,Prices update to selected currency,Passed,-
+TC019,Search Bar Results,Homepage,P2,Medium,Search,Search,"1. Enter ""IDM"" 
+2. Submit search",Keyword: IDM,Relevant product results appear,Showing 1-7 of 7 result,Passed,-
+TC020,Featured / Best Sellers Presence,Homepage,P2,Low,Homepage,Homepage,1. Check featured & best-sellers section,N/A,Featured items show price/availability,Featured items show price/availability,Passed,-
+TC021,Product Listing — Open Product,Shop page,P1,Medium,Product,Product,"1. Click a product 
+2. Open product detail",N/A,Product detail page opens,Product detail page opens,Passed,-
+TC022,Product Name & SKU Display,Product detail,P2,Medium,Product,Product,1. Check product title & SKU,N/A,Correct product name & SKU shown,Correct product name & SKU shown,Passed,-
+TC023,Product Price & Discount,Product detail,P2,Medium,Product,Product,"1. Check price, old price, discount",N/A,Prices & savings displayed correctly,Prices & savings displayed correctly,Passed,-
+TC024,Product Description & Specs,Product detail,P2,Medium,Product,Product,1. Read description/specs,N/A,Description complete & formatted,Description complete & formatted,Passed,-
+TC025,Product Image Zoom / Gallery,Product detail,P2,Low,Product,Product,"1. Click image 
+2. Use gallery/zoom",N/A,Image zoom/gallery works,Image zoom/gallery works,Passed,-
+TC026,Add To Cart (single item),Product detail,P1,Critical,Cart/Product,Cart,"1. Click Add To Cart
+2. Go to cart",N/A,Item added to cart; cart count updates,Item added to cart; cart count updates,Passed,-
+TC027,Buy Now (direct checkout),Product detail,P1,Critical,Product/Checkout,Checkout,"1. Click Buy Now 
+2. Observe redirect",N/A,Redirects to checkout with item pre-filled,Redirects to checkout with item pre-filled,Passed,-
+TC028,Product Delivery Type (Digital),Product detail,P2,Medium,Product,Checkout,"1. Check ""Digital Delivery"" label",N/A,Digital items flagged; shipping hidden,Digital items flagged; shipping fields hidden,Passed,-
+TC029,Reviews & Q&A Functionality,Product detail,P2,Low,Product,Product,"1. Read reviews 
+2. Post question",N/A,Reviews visible; Q&A works,Reviews visible; Q&A works,Passed,-
+TC030,Related Products / Upsells,Product detail,P2,Medium,Product,Product,"1. Scroll to related products 
+2. Click one",N/A,Related products show & link correctly,Related/upsell products show & link correctly,Passed,-
+TC031,View Cart Page,Item added to cart,P1,Medium,Cart,Cart,1. Open cart page,N/A,Cart lists added items with price/qty,Cart lists added items with price/qty,Passed,-
+TC032,Update Quantity in Cart,Cart page open,P2,Medium,Cart,Cart,"1. Change quantity 
+2. Click update",Increase qty,Totals update accordingly,Totals update accordingly,Passed,-
+TC033,Remove Item from Cart,Cart populated,P2,Medium,Cart,Cart,1. Click remove/delete,N/A,Item removed; cart updated,Item removed; cart updated,Passed,-
+TC034,Continue Shopping Button,Cart page,P2,Low,Navigation,Shop,1. Click Continue Shopping,N/A,Redirects back to shop/listing,Redirects back to shop/listing,Passed,-
+TC035,Coupon / Discount Apply,Cart/Checkout,P2,Medium,Cart/Checkout,Cart,"1. Enter coupon 
+2. Click Apply",valid coupon,Discount applied & totals updated,Discount applied & totals updated,Passed,-
+TC036,Open Checkout Page (flow),Cart has items,P1,Critical,Checkout,Checkout,1. Click Checkout/Proceed to payment,N/A,Checkout page loads with order summary,Checkout page loads with order summary,Passed,-
+TC037,Mandatory Fields Validation (Checkout),On checkout,P1,High,Checkout,Checkout,"1. Leave required fields empty 
+2. Submit order",N/A,Validation messages for required fields,Please fill out this field,Passed,-
+TC038,Invalid Email / Phone Validation (Checkout),On checkout,P2,High,Checkout,Checkout,"1. Enter invalid email/phone 
+2. Submit",invalid data,Error & prevent submission,"""500"" Server Error!",Failed,DEF-005
+TC039,Payment Method Selection,Checkout page,P1,High,Payment,Payment Gateway,1. Check available methods,N/A,All advertised methods appear & selectable,All advertised methods appear & selectable,Passed,-
+TC040,Card Payment End-to-end,Checkout gateway,P1,Critical,Payment,Payment Gateway,"1. Select Card 
+2. Enter test card 
+3. Submit",test card,Payment success + order confirmed,Payment success + order confirmed,Passed,-
+TC041,Mobile Wallet (bKash/Rocket) Flow,Checkout,P1,High,Payment,Payment Gateway,"1. Select bKash/Rocket 
+2. Complete payment",mobile acct,Payment success & order recorded,Payment success & order recorded,Passed,-
+TC042,Payment Failure / Cancel Handling,Checkout/payment,P2,High,Payment,Payment Gateway,1. Simulate failed payment,invalid card,Proper failure message; no order created,Proper failure message; no order created,Passed,-
+TC043,Multiple Payment Attempts,Checkout,P2,Medium,Payment,Checkout,1. Attempt multiple payment methods,multiple,Each attempt handled correctly,Each attempt handled correctly,Passed,-
+TC044,Order Total & Currency Conversion,Cart/Checkout,P2,Medium,Checkout,Checkout,"1. Switch currency before checkout 
+2. Check totals",N/A,Totals recalc correctly in chosen currency,Totals recalc correctly in chosen currency,Passed,-
+TC045,Terms & Conditions / Acceptance,Checkout,P1,High,Checkout,Checkout,1. Try placing order without accepting T&C,N/A,System blocks until T&C accepted,System blocks until T&C accepted,Passed,-
+TC046,Order Confirmation Page & Email,Successful payment,P1,Critical,Order,My Account,"1. After successful payment 
+2. Observe page & email",N/A,Order confirmation displayed & email sent,Order confirmation displayed & email sent,Passed,-
+TC047,My Orders / Order History,User logged in,P1,Medium,Orders,My Account,"1. Login 
+2. Go to Orders
+3. Check recent order",N/A,Order present with status & details,Order present with status & details,Passed,-
+TC048,Digital Delivery — License / Download,Order placed,P1,Critical,Delivery,Order Page,"1. Check order detail 
+2. Click download/license",N/A,License key / download link available,License key / download link available,Passed,-
+TC049,Invoice / PDF Generation,Order placed,P2,Medium,Order,Order Page,"1. Open order
+2. Download/print invoice",N/A,Correct invoice generated with VAT/prices,Correct invoice generated with VAT/prices,Passed,-
+TC050,Refund / Cancellation Flow,Paid order,P2,High,Order/Support,Refund Policy,"1. Request refund 
+2. Follow refund process",N/A,Refund flow follows policy; status updated,No refund option available,Failed,DEF-006
+TC051,Contact Page — Form Submission,Contact page open,P2,Medium,Contact,Contact,"1. Fill contact form 
+2. Submit",name/email,Success message + email delivered,"Sorry, mail us in info (at) bluedot (dot) ltd",Failed,DEF-007
+TC052,Support Ticket Creation,Support page,P1,High,Support,My Account,1. Create support ticket,N/A,Ticket created & confirmation sent,pm.bluedot.ltd refused to connect.,Failed,DEF-008
+TC053,FAQ / Knowledgebase Accessibility,Support page,P2,Low,Support,Homepage,"1. Open FAQ 
+2. Search for common topics",N/A,FAQs load & relevant answers present,FAQ page/search option not available on site,Failed,DEF-009
+TC054,Vendor Listing & Filter,Vendor page,P2,Medium,Vendors,Vendor,"1. Open vendor page 
+2. Filter/sort results",N/A,Vendor products listed & filter works,Vendor products listed & filter works,Passed,-
+TC055,Legal Pages Accessibility,Footer links,P2,Low,Legal,Homepage,"1. Click legal links
+2. Ensure content loads",N/A,Pages accessible & content correct,Pages accessible & content correct,Passed,-
+TC056,Reseller & Activation Policy Content,Legal pages,P2,Medium,Legal,Reseller Policy,"1. Read clauses 
+2. Verify language & steps",N/A,Policy pages reflect company process,Policy pages reflect company process,Passed,-
+TC057,Mobile Responsiveness,Mobile device,P2,Low,UI/Responsive,Homepage,"1. Open on mobile 
+2. Navigate to product",N/A,Layout adapts; no overlap; menus usable,Layout adapts; no overlap; menus usable,Passed,-
+TC058,Tablet Responsiveness,Tablet,P2,Low,UI/Responsive,Homepage,"1. Open on tablet
+2. Check layout",N/A,Tablet layout OK,Tablet layout OK,Passed,-
+TC059,Desktop Layout & Large Screen,Desktop,P2,Low,UI,Homepage,"1. Open large viewport 
+2. Verify spacing",N/A,Layout correct & images sharp,Layout correct & images sharp,Passed,-
+TC060,Buttons & Links Functionality,Any page,P2,Low,UI,Homepage,1. Click primary/secondary buttons,N/A,Buttons perform intended action,Buttons perform intended action,Passed,-
+TC061,Images Load & Alt Text,Product & Homepage,P2,Low,Accessibility,Homepage,"1. Check images load
+2. Inspect alt attributes",N/A,No broken images; alt text present,No broken images; alt text present,Passed,-
+TC062,404 / Invalid URL Handling,Invalid URL,P2,Low,UI/Error Handling,Invalid URL,"1. Open invalid path
+2. Observe response",N/A,Custom 404 page shown (friendly),Custom 404 page shown (friendly),Passed,-
